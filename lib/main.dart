@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Silvanei Flutter Demo Home Page'),
     );
   }
 }
@@ -64,6 +64,12 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      _counter--; // Reduz o valor da variável
     });
   }
 
@@ -109,6 +115,17 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            // --- INÍCIO DA ALTERAÇÃO DA SEMANA 7 ---
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: _incrementCounter,
+              child: const Text('Increment'),
+            ),
+            TextButton(
+              onPressed: _decrementCounter,
+              child: const Text('Decrement'),
+            ),
+            // --- FIM DA ALTERAÇÃO ---
           ],
         ),
       ),
