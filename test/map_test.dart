@@ -57,7 +57,7 @@ void main() {
       double media = soma / notas.length;
       medias[nome] = media;
     });
-    print('As médias calculadas foram: $medias');
+    //('As médias calculadas foram: $medias');
     expect(medias, {'Maria': 8.5, 'Carla': 8.5, 'Elena': 8.5, 'Luiza': 8.5});
   });
 }

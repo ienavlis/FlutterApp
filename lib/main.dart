@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'components.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Silvanei Flutter Demo Home Page'),
     );
   }
 }
@@ -67,6 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _decrementCounter() {
+    setState(() {
+      _counter--; // Reduz o valor da variável
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -85,6 +92,39 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+      drawer: Drawer(
+        child: SafeArea(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                ),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    'Menu',
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.pages),
+                title: const Text('Componentes'),
+                onTap: () {
+                  Navigator.pop(context); // fecha o drawer
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const ComponentsPage()),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -109,6 +149,17 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            // --- INÍCIO DA ALTERAÇÃO DA SEMANA 7 ---
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: _incrementCounter,
+              child: const Text('Increment'),
+            ),
+            TextButton(
+              onPressed: _decrementCounter,
+              child: const Text('Decrement'),
+            ),
+            // --- FIM DA ALTERAÇÃO ---
           ],
         ),
       ),
