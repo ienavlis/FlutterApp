@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'components.dart';
+import 'students_page.dart';
 import 'theme.dart'; // Importação obrigatória para o tema da Semana 11 [cite: 11]
 
 void main() {
@@ -86,6 +87,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => const ComponentsPage()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: const Text('Alunos'),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const StudentsPage()),
                   );
                 },
               ),
